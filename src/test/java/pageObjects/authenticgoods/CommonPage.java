@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import utils.LocalDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 import java.util.function.Function;
 
 public class CommonPage {
@@ -17,15 +17,12 @@ public class CommonPage {
 
     public CommonPage() {
         this.driver = new LocalDriver().LocalDriver();
-        WaitFor();
-    }
-
-    public void WaitFor() {
-        wait = new FluentWait<WebDriver>(driver)
-                .withTimeout(20, TimeUnit.SECONDS)
-                .pollingEvery(5, TimeUnit.SECONDS)
+        wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofMillis(50))
                 .ignoring(NoSuchElementException.class);
     }
+
 
     public WebElement getElement(By locator) {
         return wait.until(new Function<WebDriver, WebElement>() {

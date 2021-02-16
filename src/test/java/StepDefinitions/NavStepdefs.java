@@ -17,8 +17,8 @@ Forms form = new Forms();
     }
 
     @When("I fill in email: {string}")
-    public void iFillInEmail(String arg0) {
-        form.setEmail(arg0);
+    public void iFillInEmail(String value) {
+        form.setEmail(value);
     }
 
     @Then("I fill in password: {string}")
@@ -27,5 +27,10 @@ Forms form = new Forms();
 
     @And("I press on Submit button")
     public void iPressOnSubmitButton() {
+    }
+
+    @And("I verify that I see some kind of element")
+    public void iVerifyThatISeeSomeKindOfElement() {
+        form.verifyIfElementXXXXXXXisThere();
     }
 }
