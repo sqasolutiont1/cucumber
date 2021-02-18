@@ -4,9 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Tables extends CommonPage {
     String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/basic";
@@ -53,12 +51,13 @@ public class Tables extends CommonPage {
     public void printTheTable() {
         By tableLocator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr");
         int rows = getElements(tableLocator).size();
+        Map<Integer, List<String>> tableContent = new LinkedHashMap<>();
+
         for (int i=1; i<=rows; i++){
             By locator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+i+"]/td");
             for (WebElement element: getElements(locator)){
                 System.out.println(element.getText());
             }
         }
-
     }
 }
