@@ -42,7 +42,7 @@ public class CommonPage {
     }
 
     public void quit(){
-        driver.quit();
+        driver.close();
     }
 
     public void navigate(String arg0) {

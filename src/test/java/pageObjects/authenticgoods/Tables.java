@@ -1,14 +1,17 @@
 package pageObjects.authenticgoods;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Tables extends CommonPage {
     String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/basic";
     String header = "Basic Tables";
+    String[] headerContents = {"#", "First Name", "Last Name", "Username"};
 
     public Tables() {
         super();
@@ -36,16 +39,26 @@ public class Tables extends CommonPage {
          * this is our reference data set. agains which we are going to assert if whatever
          * we got form teh webpage is what we were expecting.
          */
-        List<String> testData = new ArrayList<String>();
-        testData.add("#");
-        testData.add("First Name");
-        testData.add("Last Name");
-        testData.add("Username");
-
+        /**
+         * Cast array to List
+         */
+        List testData = Arrays.asList(headerContents);
         /**
          * And this is were the test happens
          */
         Assert.assertEquals(actualData, testData);
+
+    }
+
+    public void printTheTable() {
+        By tableLocator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr");
+        int rows = getElements(tableLocator).size();
+        for (int i=1; i<=rows; i++){
+            By locator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+i+"]/td");
+            for (WebElement element: getElements(locator)){
+                System.out.println(element.getText());
+            }
+        }
 
     }
 }
