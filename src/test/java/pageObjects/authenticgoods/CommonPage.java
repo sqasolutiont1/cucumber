@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Wait;
 import utils.LocalDriver;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.function.Function;
 
 public class CommonPage {
@@ -28,6 +29,14 @@ public class CommonPage {
         return wait.until(new Function<WebDriver, WebElement>() {
             public WebElement apply(WebDriver driver) {
                 return driver.findElement(locator);
+            }
+        });
+    }
+
+    public List<WebElement> getElements(By locator) {
+        return wait.until(new Function<WebDriver, List<WebElement>>() {
+            public List<WebElement> apply(WebDriver driver) {
+                return driver.findElements(locator);
             }
         });
     }

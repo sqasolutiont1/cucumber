@@ -3,20 +3,49 @@ package pageObjects.authenticgoods;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class Tables extends CommonPage{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Tables extends CommonPage {
     String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/basic";
     String header = "Basic Tables";
 
-    public Tables(){
+    public Tables() {
         super();
     }
 
-    public void navToTables(){
+    public void navToTables() {
         navigate(url);
     }
 
     public void checkIfOnTheCorrectPage() {
         By locator = By.cssSelector("h1");
         Assert.assertEquals(getElement(locator).getText(), header);
+    }
+
+    public void checkHeader() {
+        By locator = By.xpath("//body//section[@id='main-wrapper']//div[@class='ng-scope']//div[@class='ng-scope']//div[1]//div[1]//div[1]//div[2]//table[1]//thead[1]//tr[1]/th");
+        /**
+         * we build the first list base on the values we read from teh webpage
+         */
+        List<String> actualData = new ArrayList<String>();
+        for (int i = 0; i < getElements(locator).size(); i++) {
+            actualData.add(getElements(locator).get(i).getText());
+        }
+        /**
+         * this is our reference data set. agains which we are going to assert if whatever
+         * we got form teh webpage is what we were expecting.
+         */
+        List<String> testData = new ArrayList<String>();
+        testData.add("#");
+        testData.add("First Name");
+        testData.add("Last Name");
+        testData.add("Username");
+
+        /**
+         * And this is were the test happens
+         */
+        Assert.assertEquals(actualData, testData);
+
     }
 }
