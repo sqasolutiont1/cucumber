@@ -18,4 +18,9 @@ public class Forms extends CommonPage {
         By locator = By.cssSelector("h1");
         Assert.assertEquals(getElement(locator).getText(),"Form Components");
     }
+
+    public void attachTheFile(String arg0) {
+        By locator = By.id("exampleInputFile");
+        getElement(locator).sendKeys(arg0);
+    }
 }

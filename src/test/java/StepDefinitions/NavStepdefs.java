@@ -1,6 +1,6 @@
 package StepDefinitions;
 
-import io.cucumber.java.Before;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -32,5 +32,20 @@ Forms form = new Forms();
     @And("I verify that I see some kind of element")
     public void iVerifyThatISeeSomeKindOfElement() {
         form.verifyIfElementXXXXXXXisThere();
+    }
+
+    @Then("I attach the file: {string}")
+    public void iAttachTheFile(String arg0) {
+        form.attachTheFile(arg0);
+    }
+
+    @After
+    public void closeTheDriverSession(){
+        form.quit();
+    }
+
+    @When("Fillut the first page with <FirstName>, <LastName>")
+    public void fillutTheFirstPageWithFirstNameLastName() {
+
     }
 }

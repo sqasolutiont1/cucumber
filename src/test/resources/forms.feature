@@ -6,5 +6,13 @@ Feature: Test Automation for Forms
   Scenario: fillout login form
     When I fill in email: "jwdnfwekjbfew@mail.jh"
     Then I fill in password: "dferfgerf"
+    Then I attach the file: "C:\Users\vkame\OneDrive\Desktop\map-of-texas.jpg"
+    And I verify that I see some kind of element
+    And I press on Submit button
+
+  Scenario: fillout login form1
+    When I fill in email: "jwdnfwekjbfew@mail.jh"
+    Then I fill in password: "dferfgerf"
+    Then I attach the file: "C:\Users\vkame\OneDrive\Desktop\map-of-texas.jpg"
     And I verify that I see some kind of element
     And I press on Submit button

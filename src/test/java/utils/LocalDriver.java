@@ -12,7 +12,4 @@ public class LocalDriver {
         webDriver =  new ChromeDriver();
         return webDriver;
     }
-    public void quit(){
-        webDriver.quit();
-    }
 }

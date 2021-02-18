@@ -32,6 +32,10 @@ public class CommonPage {
         });
     }
 
+    public void quit(){
+        driver.quit();
+    }
+
     public void navigate(String arg0) {
         driver.navigate().to(arg0);
     }
