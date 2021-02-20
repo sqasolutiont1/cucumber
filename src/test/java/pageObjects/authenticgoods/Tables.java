@@ -21,7 +21,7 @@ public class Tables extends CommonPage {
 
     public void checkIfOnTheCorrectPage() {
         By locator = By.cssSelector("h1");
-        Assert.assertEquals(getElement(locator).getText(), header);
+        Assert.assertEquals(getClickableElement(locator).getText(), header);
     }
 
     public void checkHeader() {
