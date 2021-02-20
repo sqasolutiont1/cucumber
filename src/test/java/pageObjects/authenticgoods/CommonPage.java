@@ -41,7 +41,6 @@ public class CommonPage {
     }
 
     public WebElement getClickableElement(By locator){
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
