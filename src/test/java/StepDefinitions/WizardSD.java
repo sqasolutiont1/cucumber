@@ -47,4 +47,9 @@ public class WizardSD {
     public void iVerifyThatIAnOnTheCorrectStepAndISeeTheLabel(String arg0) {
         wizard.verifyStepLabel(arg0);
     }
+
+    @When("I check First Name, I see: {string}")
+    public void iCheckFirstNameISee(String arg0) {
+        wizard.checkFirstName(arg0);
+    }
 }

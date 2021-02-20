@@ -48,4 +48,9 @@ public class Wizard extends CommonPage {
         By locator = By.xpath("//h2[normalize-space()='" + value + "']");
         Assert.assertTrue(getElement(locator).isDisplayed(), "The label is not match");
     }
+
+    public void checkFirstName(String arg0) {
+        By locator = By.xpath("//*[normalize-space()='First Name:']/..//*[normalize-space()='" + arg0 + "']");
+
+    }
 }
