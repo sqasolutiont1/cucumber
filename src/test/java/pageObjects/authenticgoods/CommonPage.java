@@ -23,6 +23,9 @@ public class CommonPage {
                 .ignoring(NoSuchElementException.class);
     }
 
+    /**
+     * Important, KEEP IT. USE IT
+     */
     public void waitForPageLoad() {
         Wait<WebDriver> wait = new WebDriverWait(driver, 30);
         wait.until(new Function<WebDriver, Boolean>() {
