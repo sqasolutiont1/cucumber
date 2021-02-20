@@ -7,9 +7,9 @@ import org.testng.Assert;
 import java.util.*;
 
 public class Tables extends CommonPage {
-    String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/basic";
-    String header = "Basic Tables";
-    String[] headerContents = {"#", "First Name", "Last Name", "Username"};
+    String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/data";
+    String header = "Data Tables";
+    String[] headerContents = {"Name", "Position", "Office", "Age", "Start Date", "Salary"};
 
     public Tables() {
         super();
