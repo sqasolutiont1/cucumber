@@ -45,8 +45,7 @@ public class Wizard extends CommonPage {
     }
 
     public void verifyStepLabel(String value) {
-        waitForPageLoad();
-        By locator = By.cssSelector("h2");
-        Assert.assertEquals(getElement(locator).getText(), value, "The label is not match");
+        By locator = By.xpath("//h2[normalize-space()='" + value + "']");
+        Assert.assertTrue(getElement(locator).isDisplayed(), "The label is not match");
     }
 }
