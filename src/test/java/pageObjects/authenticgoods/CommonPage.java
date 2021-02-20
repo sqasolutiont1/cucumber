@@ -49,4 +49,13 @@ public class CommonPage {
     public void navigate(String arg0) {
         driver.navigate().to(arg0);
     }
+
+    public void waitFor(String arg0) {
+        System.out.println(arg0);
+        try {
+            Thread.sleep(Integer.parseInt(arg0)*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

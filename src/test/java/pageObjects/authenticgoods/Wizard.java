@@ -22,10 +22,25 @@ public class Wizard extends CommonPage {
     public void pressNextButton() {
         By locator = By.cssSelector("[class='btn btn-primary ng-scope']");
         getElement(locator).click();
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    }
+
+    public void setAddress(String value) {
+        By locator = By.name("streetAddress");
+        getElement(locator).sendKeys(value);
+    }
+
+    public void setCity(String value) {
+        By locator = By.name("city");
+        getElement(locator).sendKeys(value);
+    }
+
+    public void setState(String value) {
+        By locator = By.name("state");
+        getElement(locator).sendKeys(value);
+    }
+
+    public void setZIP(String value) {
+        By locator = By.name("postalCode");
+        getElement(locator).sendKeys(value);
     }
 }

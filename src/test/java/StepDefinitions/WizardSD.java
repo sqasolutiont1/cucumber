@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import io.cucumber.java.After;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -27,5 +28,18 @@ public class WizardSD {
     @Then("I press Next Button")
     public void iPressNextButton() {
         wizard.pressNextButton();
+    }
+
+    @When("I Fillout the second Page with: {string}, {string}, {string}, {string}")
+    public void iFilloutTheSecondPageWith(String arg0, String arg1, String arg2, String arg3) {
+        wizard.setAddress(arg0);
+        wizard.setCity(arg1);
+        wizard.setState(arg2);
+        wizard.setZIP(arg3);
+    }
+
+    @And("I will wait for {string} seconds")
+    public void iWillWaitForSeconds(String arg0) {
+        wizard.waitFor(arg0);
     }
 }
