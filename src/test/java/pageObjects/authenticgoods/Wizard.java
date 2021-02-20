@@ -41,7 +41,7 @@ public class Wizard extends CommonPage {
 
     public void setZIP(String value) {
         By locator = By.name("postalCode");
-        getElement(locator).sendKeys(value);
+        sendKeysRedefined(getElement(locator), value, 1);
     }
 
     public void verifyStepLabel(String value) {

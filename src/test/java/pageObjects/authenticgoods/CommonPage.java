@@ -47,6 +47,15 @@ public class CommonPage {
         });
     }
 
+    public void sendKeysRedefined(WebElement element, String value, int delay){
+        try {
+            Thread.sleep(delay*1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        element.sendKeys(value);
+    }
+
     public List<WebElement> getElements(By locator) {
         return wait.until(new Function<WebDriver, List<WebElement>>() {
             public List<WebElement> apply(WebDriver driver) {
