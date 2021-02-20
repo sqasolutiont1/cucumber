@@ -45,14 +45,15 @@ public class Wizard extends CommonPage {
     }
 
     public void verifyStepLabel(String value) {
+        waitForPageLoad();
         By locator = By.xpath("//h2[normalize-space()='" + value + "']");
         Assert.assertTrue(getElement(locator).isDisplayed(), "The label is not match");
     }
 
     public void checkFirstName(String arg0) {
         By locator = By.xpath("//*[normalize-space()='First Name:']/../p");
-        Assert.assertEquals(getElement(locator).getText(), arg0, "First name doesn't match:" + "getting" +
-                "this:" + getElement(locator).getText() + "instead of "+ arg0 );
+        Assert.assertEquals(getElement(locator).getText(), arg0, "First name doesn't match: " + " getting " +
+                " this: " + getElement(locator).getText() + " instead of "+ arg0 );
 
     }
 }
