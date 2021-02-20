@@ -1,6 +1,5 @@
 package pageObjects.authenticgoods;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +15,6 @@ import java.util.function.Function;
 public class CommonPage {
     WebDriver driver;
     Wait<WebDriver> wait;
-    static Logger log = Logger.getLogger(CommonPage.class.getName());
 
 
     public CommonPage() {
@@ -49,9 +47,6 @@ public class CommonPage {
     }
 
     public void navigate(String arg0) {
-        log.info("Hello this is an info message");
-        log.debug("Hello this is an info message");
-
         driver.navigate().to(arg0);
     }
 }

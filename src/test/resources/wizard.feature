@@ -1,9 +1,5 @@
 Feature: Wizard
-  Scenario Outline: eating
-    Given I nav
-    When Fillut the first page with <FirstName>, <LastName>
-    Then I fill out seond page with <....>
-    Examples:
-      | FirstName | LastName | left   |
-      |    12     |   5      |    7   |
-      |    20     |   5      |   15   |
+  Scenario: Fillout Step one
+    Given I navigate to Wizard
+    When Fillout the first page with: "First Name" and " Last name"
+    Then I press Next Button
