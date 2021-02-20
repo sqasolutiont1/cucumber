@@ -1,6 +1,7 @@
 package pageObjects.authenticgoods;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -37,6 +38,11 @@ public class CommonPage {
                         .equals("complete");
             }
         });
+    }
+
+    public WebElement getClickableElement(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     public WebElement getElement(By locator) {

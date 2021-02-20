@@ -8,9 +8,9 @@ Feature: Wizard
     When I Fillout the second Page with: "streetAddress", "city", "state", "zip"
     Then I press Next Button
     And I verify that I an on the correct Step and I see the label: "Finish last step"
-    When I check First Name, I see: "Last Name"
+    When I check First Name, I see: "First Name"
     #When I check Last Name, I see: "Last Name"
-    And I will wait for "10" seconds
+    #And I will wait for "10" seconds
 
 
 
