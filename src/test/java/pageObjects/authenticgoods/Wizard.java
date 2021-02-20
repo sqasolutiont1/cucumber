@@ -43,4 +43,9 @@ public class Wizard extends CommonPage {
         By locator = By.name("postalCode");
         getElement(locator).sendKeys(value);
     }
+
+    public void verifyStepLabel(String value) {
+        By locator = By.cssSelector("h2");
+        Assert.assertEquals(getElement(locator).getText(), value, "The label is not match");
+    }
 }

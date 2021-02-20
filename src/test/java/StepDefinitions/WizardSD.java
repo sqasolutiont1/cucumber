@@ -42,4 +42,9 @@ public class WizardSD {
     public void iWillWaitForSeconds(String arg0) {
         wizard.waitFor(arg0);
     }
+
+    @And("I verify that I an on the correct Step and I see the label: {string}")
+    public void iVerifyThatIAnOnTheCorrectStepAndISeeTheLabel(String arg0) {
+        wizard.verifyStepLabel(arg0);
+    }
 }
