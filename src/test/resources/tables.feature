@@ -13,3 +13,10 @@ Feature: Test Automation for Forms
     When I select 100 elements on the page
     Then I search for: "Jennifer Chang"
     And I get Search results: "Jennifer Chang|Regional Director|Singapore|28|2010/11/14|$357,650"
+    Then I will make sure that I have only one row in the search results
+#optional
+  And I search for: "Edinburgh"
+    And I'm getting 9 search results.
+
+    #Extra Optional
+  Then I sort by Salary and check if sort is working.
