@@ -9,7 +9,7 @@ import java.util.*;
 public class Tables extends CommonPage {
     String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/data";
     String header = "Data Tables";
-    String[] headerContents = {"Name", "Position", "Office", "Age", "Start Date", "Salary"};
+    String[] headerContents = {"Name", "Position", "Office", "Age", "Start date", "Salary"};
 
     public Tables() {
         super();
@@ -25,13 +25,14 @@ public class Tables extends CommonPage {
     }
 
     public void checkHeader() {
-        By locator = By.xpath("//body//section[@id='main-wrapper']//div[@class='ng-scope']//div[@class='ng-scope']//div[1]//div[1]//div[1]//div[2]//table[1]//thead[1]//tr[1]/th");
+        By locator = By.cssSelector("[role = 'row'] > th");
         /**
          * we build the first list base on the values we read from teh webpage
          */
         List<String> actualData = new ArrayList<String>();
         for (int i = 0; i < getElements(locator).size(); i++) {
             actualData.add(getElements(locator).get(i).getText());
+            System.out.println(getElements(locator).get(i).getText());
         }
         /**
          * this is our reference data set. agains which we are going to assert if whatever
@@ -49,15 +50,15 @@ public class Tables extends CommonPage {
     }
 
     public void printTheTable() {
-        By tableLocator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr");
-        int rows = getElements(tableLocator).size();
-        Map<Integer, List<String>> tableContent = new LinkedHashMap<>();
+//        By tableLocator = By.cssSelector("[role = 'row']");
+//        int rows = getElements(tableLocator).size();
+//        Map<Integer, List<String>> tableContent = new LinkedHashMap<>();
 
-        for (int i=1; i<=rows; i++){
-            By locator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+i+"]/td");
-            for (WebElement element: getElements(locator)){
-                System.out.println(element.getText());
-            }
-        }
+//        for (int i=1; i<=rows; i++){
+//            By locator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+i+"]/td");
+//            for (WebElement element: getElements(locator)){
+//                System.out.println(element.getText());
+//            }
+//        }
     }
 }
