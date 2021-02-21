@@ -50,15 +50,16 @@ public class Tables extends CommonPage {
     }
 
     public void printTheTable() {
-//        By tableLocator = By.cssSelector("[role = 'row']");
-//        int rows = getElements(tableLocator).size();
-//        Map<Integer, List<String>> tableContent = new LinkedHashMap<>();
+        By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
+        int rows = getElements(tableLocator).size();
+        Map<Integer, String> tableContent = new LinkedHashMap<>();
 
-//        for (int i=1; i<=rows; i++){
-//            By locator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+i+"]/td");
-//            for (WebElement element: getElements(locator)){
-//                System.out.println(element.getText());
-//            }
-//        }
+        for (int i=1; i<=rows; i++){
+            for (WebElement element: getElements(tableLocator)){
+                tableContent.put(i, element.getText());
+            }
+        }
+        System.out.println(tableContent);
+
     }
 }
