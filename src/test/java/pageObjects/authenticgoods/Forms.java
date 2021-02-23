@@ -11,6 +11,7 @@ public class Forms extends CommonPage {
 
     public void setEmail(String value) {
         By locator = By.id("exampleInputEmail1");
+        getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
 

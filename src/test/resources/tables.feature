@@ -19,4 +19,13 @@ Feature: Test Automation for Forms
     And I'm getting 9 search results.
 
     #Extra Optional
-  Then I sort by Salary and check if sort is working.
+  Scenario: Table usage
+
+    Then I sort by Salary and check if sort is working.
+    | Fields                 | Values              |
+    | First Name             | Tom                 |
+    | Last Name              | Kenny               |
+    | Email Address          | someone@someone.com |
+    | Re-enter Email Address | someone@someone.com |
+    | Password               | Password1           |
+    | Birthdate              | 01                  |
