@@ -22,10 +22,7 @@ public class TablesStepdefs {
     public void iCheckIfIMOnTheTablesPage() {
         tables.checkIfOnTheCorrectPage();
     }
-    @After
-    public void close(){
-        tables.quit();
-    }
+
 
     @Then("I check the list of the elements in the Header")
     public void iCheckTheListOfTheElementsInTheHeader() {

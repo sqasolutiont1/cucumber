@@ -13,46 +13,19 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RestApiStepDef {
-    protected static RequestSpecification requestSpec;
+    protected static RequestSpecification request;
     protected static ResponseSpecification responseSpec;
-
-    @When("I call GET I have a response")
-    public void iCallGETIHaveAResponse() {
-        requestSpec = new RequestSpecBuilder().
-                setBaseUri("https://api.publicapis.org/").
-                build();
-        Response response = given().
-                spec(requestSpec).
-                when().
-                get("/entries?category=animals&https=true");
-        //System.out.println(response.asString());
-
-    }
 
     @When("I call Get Categories I have a response")
     public void iCallGetCategoriesIHaveAResponse() {
-        requestSpec = new RequestSpecBuilder().
-                setBaseUri("https://api.publicapis.org/").
+        request = new RequestSpecBuilder().
+                setBaseUri("https://petstore.swagger.io/v2").
                 build();
         Response response = given().
-                spec(requestSpec).
+                spec(request).
                 when().
-                get("/random?auth=null").
-                then().assertThat().extract().response();
+                get("/pet/findByStatus?status=available");
         //System.out.println(response.asString());
         System.out.println(response.then().extract().body().jsonPath().prettify());
-        System.out.println(response.then().extract().body().path("entries.API").toString());
-
-        requestSpec = new RequestSpecBuilder().
-                setBaseUri("https://api.publicapis.org/").
-                build();
-        Response response2 = given().
-                spec(requestSpec).
-                when().
-                get("/categories").
-                then().assertThat().extract().response();
-        //System.out.println(response.asString());
-        System.out.println(response2.then().extract().body().jsonPath().prettify());
-        //System.out.println(response2.then().extract().body().path("entries.API").toString());
     }
 }

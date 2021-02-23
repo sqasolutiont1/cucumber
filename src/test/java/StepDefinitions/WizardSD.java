@@ -20,10 +20,7 @@ public class WizardSD {
         wizard.navigate(Wizard.URL);
     }
 
-    @After
-    public void close(){
-        wizard.quit();
-    }
+
 
     @Then("I press Next Button")
     public void iPressNextButton() {

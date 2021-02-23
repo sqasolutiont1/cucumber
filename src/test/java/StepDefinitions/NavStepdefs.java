@@ -39,10 +39,7 @@ Forms form = new Forms();
         form.attachTheFile(arg0);
     }
 
-    @After
-    public void closeTheDriverSession(){
-        form.quit();
-    }
+
 
     @When("Fillut the first page with <FirstName>, <LastName>")
     public void fillutTheFirstPageWithFirstNameLastName() {
