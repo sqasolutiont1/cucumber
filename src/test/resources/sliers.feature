@@ -1,3 +1,4 @@
 Feature:
   Scenario:
-    When I slide to :"50"%
+    When I navigate to Sliders
+    Then I slide to :"50"%
