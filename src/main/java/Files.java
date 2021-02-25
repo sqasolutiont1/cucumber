@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Files {
-    private static final String MAIN_PATH = "C:\\files\\";
+    private static final String MAIN_PATH = "src/main/resources/";
 
     public static void main(String[] args) throws IOException {
 
