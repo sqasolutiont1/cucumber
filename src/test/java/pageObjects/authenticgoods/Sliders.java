@@ -39,6 +39,9 @@ public class Sliders extends CommonPage {
          * parse teh string to get width value.
          */
         System.out.println(initialPercent.substring(initialPercent.indexOf("width: ") + 7 , initialPercent.length()));
+        /**
+         * remove %;
+         */
 
         js.executeScript("arguments[0].setAttribute('style', 'width: 10.0%')", elementSlider);
         js.executeScript("arguments[0].setAttribute('style', 'left: 10.0%')", elementHandle);
