@@ -17,7 +17,7 @@ public class CommonPage {
 
 
     public CommonPage() {
-        this.driver = new OurDriver().remoteDriver();
+        this.driver = new OurDriver().localDriver();
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(50))

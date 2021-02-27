@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class OurDriver {
 
-    public WebDriver LocalDriver(){
+    public WebDriver localDriver(){
         WebDriver webDriver;
         WebDriverManager.chromedriver().setup();
         webDriver =  new ChromeDriver();
