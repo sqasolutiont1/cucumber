@@ -2,12 +2,11 @@ package StepDefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pageObjects.authenticgoods.Sliders;
-import pageObjects.authenticgoods.Wizard;
 
 public class SlidersStepDef {
     Sliders sliders = new Sliders();
+
     @Given("I navigate to Sliders")
     public void iNavigateToWizard() {
         sliders.navigate(Sliders.URL);
