@@ -10,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class LocalDriver {
+public class OurDriver {
 
     public WebDriver LocalDriver(){
         WebDriver webDriver;
