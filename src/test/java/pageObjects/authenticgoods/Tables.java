@@ -16,7 +16,7 @@ public class Tables extends CommonPage {
     }
 
     public void navToTables() {
-        navigate(url);
+        navigate();
     }
 
     public void checkIfOnTheCorrectPage() {

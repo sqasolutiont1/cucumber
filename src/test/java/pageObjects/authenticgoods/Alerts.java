@@ -1,7 +1,6 @@
 package pageObjects.authenticgoods;
 
-import org.apache.poi.ss.formula.functions.Na;
-import org.apache.tools.ant.taskdefs.WaitFor;
+import org.openqa.selenium.By;
 import pageObjects.authenticgoods.Navigation.Navigation;
 
 public class Alerts extends CommonPage {
@@ -11,11 +10,11 @@ Navigation navigation = new Navigation();
     }
 
     public void navigateToAlertPage() {
-        navigation.pressOnAlerts();
+        navigation.pressOnAlertsMenuItem();
     }
 
-    public void checkHeader() {
-
+    public String getHeader() {
+        return getClickableElement(By.cssSelector("h1")).getText();
     }
 
     public void fillinTextField() {

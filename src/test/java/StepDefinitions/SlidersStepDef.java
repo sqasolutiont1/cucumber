@@ -9,7 +9,7 @@ public class SlidersStepDef {
 
     @Given("I navigate to Sliders")
     public void iNavigateToWizard() {
-        sliders.navigate(Sliders.URL);
+        sliders.navigate();
     }
 
     @Then("I slide to :{string}%")

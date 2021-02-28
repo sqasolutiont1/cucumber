@@ -14,6 +14,7 @@ import java.util.function.Function;
 public class CommonPage {
     WebDriver driver;
     Wait<WebDriver> wait;
+    String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/index.html#";
 
 
     public CommonPage() {
@@ -73,8 +74,8 @@ public class CommonPage {
         driver.close();
     }
 
-    public void navigate(String arg0) {
-        driver.navigate().to(arg0);
+    public void navigate() {
+        driver.navigate().to(URL);
     }
 
     public void waitFor(String arg0) {

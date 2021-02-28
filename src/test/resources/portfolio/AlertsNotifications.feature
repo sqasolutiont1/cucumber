@@ -3,5 +3,6 @@ Feature: I'm demonstrating ow I'm working with WebElements
     Given I navigate to alerts and notifications
 
   Scenario: Add/Read notification
-    Then I will wait for "10" seconds
+    When I am on the Alert And notifications Page
+    Then I will wait for "3" seconds
 

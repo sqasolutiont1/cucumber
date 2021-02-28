@@ -17,7 +17,7 @@ public class WizardSD {
 
     @Given("I navigate to Wizard")
     public void iNavigateToWizard() {
-        wizard.navigate(Wizard.URL);
+        wizard.navigate();
     }
 
 

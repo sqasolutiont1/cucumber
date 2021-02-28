@@ -13,7 +13,7 @@ Forms form = new Forms();
 
     @Given("Navigate to {string}")
     public void navigateTo(String arg0) {
-        form.navigate(arg0);
+        form.navigate();
     }
 
     @When("I fill in email: {string}")
