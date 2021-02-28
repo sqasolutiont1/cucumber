@@ -1,6 +1,7 @@
 package pageObjects.authenticgoods;
 
 import org.apache.poi.ss.formula.functions.Na;
+import org.apache.tools.ant.taskdefs.WaitFor;
 import pageObjects.authenticgoods.Navigation.Navigation;
 
 public class Alerts extends CommonPage {
@@ -10,7 +11,7 @@ Navigation navigation = new Navigation();
     }
 
     public void navigateToAlertPage() {
-        navigation.new UIElementsMenu().pressOnAlerts();
+        navigation.pressOnAlerts();
     }
 
     public void checkHeader() {

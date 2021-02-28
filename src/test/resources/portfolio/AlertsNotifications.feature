@@ -3,4 +3,5 @@ Feature: I'm demonstrating ow I'm working with WebElements
     Given I navigate to alerts and notifications
 
   Scenario: Add/Read notification
+    Then I will wait for "10" seconds
 
