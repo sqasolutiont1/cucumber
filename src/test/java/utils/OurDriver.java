@@ -11,9 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class OurDriver {
+    static WebDriver webDriver;
 
-    public WebDriver localDriver(){
-        WebDriver webDriver;
+    public static WebDriver localDriver(){
         WebDriverManager.chromedriver().setup();
         webDriver =  new ChromeDriver();
         return webDriver;

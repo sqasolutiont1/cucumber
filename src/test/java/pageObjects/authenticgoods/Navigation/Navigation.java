@@ -1,14 +1,10 @@
 package pageObjects.authenticgoods.Navigation;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import pageObjects.authenticgoods.CommonPage;
 
 public class Navigation extends CommonPage {
-
-    public Navigation() {
-        super();
-        navigate();
-    }
 
     public void pressOnAlertsMenuItem() {
         pressOnUIElementsMenuItem();

@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.authenticgoods.Navigation.Navigation;
 import utils.OurDriver;
 
 import java.time.Duration;
@@ -12,13 +13,16 @@ import java.util.List;
 import java.util.function.Function;
 
 public class CommonPage {
-    WebDriver driver;
+
+    static WebDriver driver = null;
     Wait<WebDriver> wait;
     String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/index.html#";
 
 
     public CommonPage() {
-        this.driver = new OurDriver().localDriver();
+        if (driver == null){
+            driver = OurDriver.localDriver();
+        }
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(50))
@@ -76,6 +80,7 @@ public class CommonPage {
 
     public void navigate() {
         driver.navigate().to(URL);
+        waitForPageLoad();
     }
 
     public void waitFor(String arg0) {
