@@ -5,6 +5,7 @@ import org.testng.Assert;
 
 public class Wizard extends CommonPage {
     public static String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/forms/wizard/step_one";
+
     public Wizard() {
         super();
     }
@@ -53,7 +54,7 @@ public class Wizard extends CommonPage {
     public void checkFirstName(String arg0) {
         By locator = By.xpath("//*[normalize-space()='First Name:']/../p");
         Assert.assertEquals(getClickableElement(locator).getText(), arg0, "First name doesn't match: " + " getting " +
-                " this: " + getElement(locator).getText() + " instead of "+ arg0 );
+                " this: " + getElement(locator).getText() + " instead of " + arg0);
 
     }
 }

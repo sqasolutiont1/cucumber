@@ -17,7 +17,7 @@ public class Forms extends CommonPage {
 
     public void verifyIfElementXXXXXXXisThere() {
         By locator = By.cssSelector("h1");
-        Assert.assertEquals(getElement(locator).getText(),"Form Components");
+        Assert.assertEquals(getElement(locator).getText(), "Form Components");
     }
 
     public void attachTheFile(String arg0) {

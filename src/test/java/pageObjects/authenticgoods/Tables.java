@@ -54,8 +54,8 @@ public class Tables extends CommonPage {
         int rows = getElements(tableLocator).size();
         Map<Integer, String> tableContent = new LinkedHashMap<>();
 
-        for (int i=1; i<=rows; i++){
-            for (WebElement element: getElements(tableLocator)){
+        for (int i = 1; i <= rows; i++) {
+            for (WebElement element : getElements(tableLocator)) {
                 tableContent.put(i, element.getText());
             }
         }

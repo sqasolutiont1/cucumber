@@ -11,17 +11,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class OurDriver {
-    static WebDriver webDriver;
-
     public static WebDriver localDriver(){
         WebDriverManager.chromedriver().setup();
-        webDriver =  new ChromeDriver();
-        return webDriver;
+        return new ChromeDriver();
     }
 
     public RemoteWebDriver remoteDriver() {
         RemoteWebDriver webDriver = null;
-
         ChromeOptions options = new ChromeOptions();
         try {
             webDriver = new RemoteWebDriver(new URL("http://10.0.1.57:4444/wd/hub"), options);

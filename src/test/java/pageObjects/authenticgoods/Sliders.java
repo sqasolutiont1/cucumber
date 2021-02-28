@@ -38,7 +38,7 @@ public class Sliders extends CommonPage {
         /**
          * parse teh string to get width value.
          */
-        System.out.println(initialPercent.substring(initialPercent.indexOf("width: ") + 7 , initialPercent.length()));
+        System.out.println(initialPercent.substring(initialPercent.indexOf("width: ") + 7));
         /**
          * remove %;
          */

@@ -6,7 +6,6 @@ import pageObjects.authenticgoods.Navigation.Navigation;
 public class Alerts extends CommonPage {
     Navigation navigation = new Navigation();
 
-
     public void navigateToAlertPage() {
         navigate();
         navigation.pressOnAlertsMenuItem();
