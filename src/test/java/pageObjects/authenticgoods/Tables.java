@@ -42,7 +42,7 @@ public class Tables extends CommonPage {
             actualData.add(getElements(locator).get(i).getText());
         }
         /**
-         * this is our reference data set. agains which we are going to assert if whatever
+         * this is our reference data set. against which we are going to assert if whatever
          * we got form teh webpage is what we were expecting.
          */
         /**
@@ -56,6 +56,9 @@ public class Tables extends CommonPage {
     }
 
     public void printTheTable() {
+        /**
+         * This method will set the amount of the elements on teh table to the given number
+         */
         pickPaginationOptions("100");
         By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
         waitForPageLoad();
