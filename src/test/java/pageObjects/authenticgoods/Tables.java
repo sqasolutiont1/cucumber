@@ -1,11 +1,14 @@
 package pageObjects.authenticgoods;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import pageObjects.authenticgoods.Navigation.Navigation;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class Tables extends CommonPage {
@@ -51,16 +54,21 @@ public class Tables extends CommonPage {
     }
 
     public void printTheTable() {
+        pickPaginationOptions("100");
         By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
-        int rows = getElements(tableLocator).size();
-        Map<Integer, String> tableContent = new LinkedHashMap<>();
-
-        for (int i = 1; i <= rows; i++) {
-            for (WebElement element : getElements(tableLocator)) {
-                tableContent.put(i, element.getText());
+        waitForPageLoad();
+        List<WebElement> rows = getElements(tableLocator);
+        List<String> tableContent = new ArrayList<>();
+            for (WebElement element : rows) {
+                tableContent.add(element.getText());
             }
-        }
+
         System.out.println(tableContent);
+        try {
+            FileUtils.writeLines(new File("src/test/resources/output.txt"), tableContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -80,5 +88,27 @@ public class Tables extends CommonPage {
         By locator = By.cssSelector("[class='dataTables_info']");
         String text = getClickableElement(locator).getText();
         return Integer.parseInt(text.substring(19, 21));
+    }
+
+    public void search(String value) {
+        By locator = By.cssSelector("[type='search']");
+        WebElement element = getClickableElement(locator);
+        element.clear();
+        element.sendKeys(value);
+        waitForPageLoad();
+    }
+
+    public List<String> getAllTheRecordsFromTable() {
+        By Locator = By.cssSelector("[id='example'] >tbody >tr >td");
+        List<WebElement> cells = getElements(Locator);
+        List<String> textFromCells = new ArrayList<>();
+        for (WebElement element : cells){
+            textFromCells.add(element.getText());
+        }
+        return textFromCells;
+    }
+
+    public void getTestData() {
+
     }
 }

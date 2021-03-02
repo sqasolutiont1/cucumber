@@ -13,5 +13,12 @@ Feature: Test Automation for Forms
       |25  |
       |50  |
       |100 |
-  #Scenario: Check search
-  #Scenario: reach search queries from the file
+
+  Scenario: Check search
+    When I search for: "Yuri Berry"
+    Then I check if I see the expected result
+      |Yuri Berry|Chief Marketing Officer (CMO)|New York|40|2009/06/25|$675,000|
+
+  Scenario: read search queries from the file
+    When I search for something
+    #Then I get search result

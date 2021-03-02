@@ -47,30 +47,13 @@ public class TablesStepdefs {
 
     @Then("I search for: {string}")
     public void iSearchFor(String arg0) {
-        //Locate Search field
-        // make sure that there is no any data in search field from previous search attempts!!!! .clear()
-        //fillout search field
-       //wait for search results
-        //read the search results
-        //Assert: compare the actual with expected
-
-
+        tables.search(arg0);
     }
 
     @Then("I sort by Salary and check if sort is working.")
     public void iSortBySalaryAndCheckIfSortIsWorking(DataTable table) {
        List<List<String>> rows = table.asLists(String.class);
-        List<Map<String, String>> rows1 = table.asMaps(String.class, String.class);
-
-//        for (Map<String,String> columns : rows) {
-//            System.out.println(columns);
-//        }
-
         for (List<String> columns : rows) {
-            System.out.println(columns);
-            System.out.println(columns.get(0));
-            System.out.println(columns.get(1));
-
         }
     }
 
@@ -87,5 +70,16 @@ public class TablesStepdefs {
 
         tables.getNumberOfElementsOnTheTable();
         Assert.assertEquals(tables.getNumberOfElementsOnTheTable(), numberOfElements, "Numbers of the elements on the table and in selector don't match");
+    }
+
+    @Then("I check if I see the expected result")
+    public void iCheckIfISeeTheExpectedResult(DataTable dataTable) {
+        Assert.assertEquals(tables.getAllTheRecordsFromTable(), dataTable.asList(), "no match");
+    }
+
+    @When("I search for something")
+    public void iSearchForSomething() {
+        tables.printTheTable();
+        tables.getTestData();
     }
 }
