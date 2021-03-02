@@ -81,6 +81,11 @@ public class TablesStepdefs {
 
     @And("I will see {string} records on the page")
     public void iWillSeeRecordsOnThePage(String number) {
-        Assert.assertEquals(tables.getNumberOfElementsOnTheTable(), Integer.parseInt(number), "Numbers of the elements on the table and in selector don't match");
+        int numberOfElements = Integer.parseInt(number);
+        int totalAmountOfElements = tables.getTheTotalAmountOfElements();
+        if (numberOfElements > totalAmountOfElements) numberOfElements = totalAmountOfElements;
+
+        tables.getNumberOfElementsOnTheTable();
+        Assert.assertEquals(tables.getNumberOfElementsOnTheTable(), numberOfElements, "Numbers of the elements on the table and in selector don't match");
     }
 }

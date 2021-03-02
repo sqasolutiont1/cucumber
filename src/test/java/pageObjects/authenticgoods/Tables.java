@@ -75,4 +75,10 @@ public class Tables extends CommonPage {
         By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
         return getElements(tableLocator).size();
     }
+
+    public int getTheTotalAmountOfElements() {
+        By locator = By.cssSelector("[class='dataTables_info']");
+        String text = getClickableElement(locator).getText();
+        return Integer.parseInt(text.substring(19, 21));
+    }
 }
