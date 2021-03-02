@@ -20,5 +20,4 @@ Feature: Test Automation for Forms
       |Yuri Berry|Chief Marketing Officer (CMO)|New York|40|2009/06/25|$675,000|
 
   Scenario: read search queries from the file
-    When I search for something
-    #Then I get search result
+    When I check if data in webapp is matching the test data in the file

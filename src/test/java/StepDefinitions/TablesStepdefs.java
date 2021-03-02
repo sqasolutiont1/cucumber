@@ -77,7 +77,7 @@ public class TablesStepdefs {
         Assert.assertEquals(tables.getAllTheRecordsFromTable(), dataTable.asList(), "no match");
     }
 
-    @When("I search for something")
+    @When("I check if data in webapp is matching the test data in the file")
     public void iSearchForSomething() {
         //tables.printTheTable();
         List<String> testData = tables.readTestData();
