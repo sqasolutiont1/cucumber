@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageObjects.authenticgoods.Navigation.TestURLs;
 import utils.OurDriver;
 
 import java.time.Duration;
@@ -14,7 +15,7 @@ public class CommonPage {
 
     static WebDriver driver;
     Wait<WebDriver> wait;
-    String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/index.html#";
+    String URL = TestURLs.MainURL;
 
 
     public CommonPage() {

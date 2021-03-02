@@ -26,7 +26,8 @@ public class AlertsAndNotificationsStepdefs {
     }
 
     @Then("I fill out new notification message: {string}")
-    public void iFillOutNewNotificationMessage(String arg0) {
-
+    public void iFillOutNewNotificationMessage(String messageText) {
+        alerts.fillinTextField(messageText);
+        alerts.pressAddNotificationBtn();
     }
 }
