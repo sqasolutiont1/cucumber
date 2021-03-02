@@ -58,17 +58,17 @@ public class TablesStepdefs {
     @Then("I sort by Salary and check if sort is working.")
     public void iSortBySalaryAndCheckIfSortIsWorking(DataTable table) {
        List<List<String>> rows = table.asLists(String.class);
-//        List<Map<String, String>> rows1 = table.asMaps(String.class, String.class);
-//
+        List<Map<String, String>> rows1 = table.asMaps(String.class, String.class);
+
 //        for (Map<String,String> columns : rows) {
 //            System.out.println(columns);
 //        }
-//
-//        for (List<String> columns : rows) {
-//            System.out.println(columns);
-//            System.out.println(columns.get(0));
-//            System.out.println(columns.get(1));
-//
-//        }
+
+        for (List<String> columns : rows) {
+            System.out.println(columns);
+            System.out.println(columns.get(0));
+            System.out.println(columns.get(1));
+
+        }
     }
 }
