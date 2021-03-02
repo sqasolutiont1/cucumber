@@ -1,6 +1,12 @@
 Feature: I'm demonstrating ow I'm working with WebElements
   #Background: Navigate to the A&N page
 
+  Scenario: Add/Read notification
+    Given I navigate to alerts and notifications
+    When I am on the Alert And notifications Page
+    Then I fill out new notification message: "First message"
+    Then I read the notification message : "First message"
+
   Scenario Outline: Add/Read notification Examples
     Given I navigate to alerts and notifications
     When I am on the Alert And notifications Page
