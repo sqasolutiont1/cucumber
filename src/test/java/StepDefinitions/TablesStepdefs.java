@@ -7,6 +7,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import pageObjects.authenticgoods.Tables;
 
 import java.util.List;
@@ -76,5 +77,10 @@ public class TablesStepdefs {
     @When("I pick {string} elements in records per page controller")
     public void iPickElementsInRecordsPerPageController(String numberOfElements) {
         tables.pickPaginationOptions(numberOfElements);
+    }
+
+    @And("I will see {string} records on the page")
+    public void iWillSeeRecordsOnThePage(String number) {
+        Assert.assertEquals(tables.getNumberOfElementsOnTheTable(), Integer.parseInt(number), "Numbers of the elements on the table and in selector don't match");
     }
 }

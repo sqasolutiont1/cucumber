@@ -70,4 +70,9 @@ public class Tables extends CommonPage {
         selector.selectByValue(numberOfElements);
         waitForPageLoad();
     }
+
+    public int getNumberOfElementsOnTheTable() {
+        By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
+        return getElements(tableLocator).size();
+    }
 }
