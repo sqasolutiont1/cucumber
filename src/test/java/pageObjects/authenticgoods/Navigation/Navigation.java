@@ -14,5 +14,14 @@ public class Navigation extends CommonPage {
     private void pressOnUIElementsMenuItem() {
         getClickableElement(By.cssSelector("[title='UI Elements']")).click();
     }
+    private void pressOnTablesMenuItem() {
+        getClickableElement(By.cssSelector("[title='Tables']")).click();
+    }
+
+    public void pressOnDataTables() {
+        pressOnTablesMenuItem();
+        getClickableElement(By.cssSelector("[title='Data Tables']")).click();
+        waitForPageLoad();
+    }
 }
 

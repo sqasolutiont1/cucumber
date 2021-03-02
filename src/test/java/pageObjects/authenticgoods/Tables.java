@@ -2,14 +2,16 @@ package pageObjects.authenticgoods;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import pageObjects.authenticgoods.Navigation.Navigation;
 
 import java.util.*;
 
 public class Tables extends CommonPage {
-    String url = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/tables/data";
     String header = "Data Tables";
     String[] headerContents = {"Name", "Position", "Office", "Age", "Start date", "Salary"};
+    Navigation navigation = new Navigation();
 
     public Tables() {
         super();
@@ -17,6 +19,7 @@ public class Tables extends CommonPage {
 
     public void navToTables() {
         navigate();
+        navigation.pressOnDataTables();
     }
 
     public void checkIfOnTheCorrectPage() {
@@ -29,10 +32,9 @@ public class Tables extends CommonPage {
         /**
          * we build the first list base on the values we read from teh webpage
          */
-        List<String> actualData = new ArrayList<String>();
+        List<String> actualData = new ArrayList<>();
         for (int i = 0; i < getElements(locator).size(); i++) {
             actualData.add(getElements(locator).get(i).getText());
-            System.out.println(getElements(locator).get(i).getText());
         }
         /**
          * this is our reference data set. agains which we are going to assert if whatever
@@ -46,7 +48,6 @@ public class Tables extends CommonPage {
          * And this is were the test happens
          */
         Assert.assertEquals(actualData, testData);
-
     }
 
     public void printTheTable() {
@@ -61,5 +62,12 @@ public class Tables extends CommonPage {
         }
         System.out.println(tableContent);
 
+    }
+
+    public void pickPaginationOptions(String numberOfElements) {
+        By locator = By.cssSelector("[name='example_length']");
+        Select selector = new Select(getElement(locator));
+        selector.selectByValue(numberOfElements);
+        waitForPageLoad();
     }
 }

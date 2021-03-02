@@ -6,6 +6,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import pageObjects.authenticgoods.Tables;
 
 import java.util.List;
@@ -70,5 +71,10 @@ public class TablesStepdefs {
             System.out.println(columns.get(1));
 
         }
+    }
+
+    @When("I pick {string} elements in records per page controller")
+    public void iPickElementsInRecordsPerPageController(String numberOfElements) {
+        tables.pickPaginationOptions(numberOfElements);
     }
 }
