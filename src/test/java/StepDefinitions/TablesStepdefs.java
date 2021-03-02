@@ -79,7 +79,8 @@ public class TablesStepdefs {
 
     @When("I search for something")
     public void iSearchForSomething() {
-        tables.printTheTable();
-        tables.getTestData();
+        //tables.printTheTable();
+        List<String> testData = tables.readTestData();
+        Assert.assertEquals(tables.getTestData(), testData, "Actual data doesn't match the test data");
     }
 }

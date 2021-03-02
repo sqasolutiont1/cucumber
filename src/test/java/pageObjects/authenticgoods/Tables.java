@@ -108,7 +108,25 @@ public class Tables extends CommonPage {
         return textFromCells;
     }
 
-    public void getTestData() {
+    public List<String> getTestData() {
+        pickPaginationOptions("100");
+        By tableLocator = By.cssSelector("[id='example'] >tbody >tr");
+        waitForPageLoad();
+        List<WebElement> rows = getElements(tableLocator);
+        List<String> tableContent = new ArrayList<>();
+        for (WebElement element : rows) {
+            tableContent.add(element.getText());
+        }
+        return tableContent;
+    }
 
+    public List<String> readTestData() {
+        List<String> lines = new ArrayList<>();
+        try {
+            lines = FileUtils.readLines(new File("src/test/resources/output.txt"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lines;
     }
 }
