@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.authenticgoods.Alerts;
@@ -22,5 +23,10 @@ public class AlertsAndNotificationsStepdefs {
     @When("I am on the Alert And notifications Page")
     public void iAmOnTheAlertAndNotificationsPage() {
         Assert.assertEquals(alerts.getHeader(),"Alerts & Notifications", "Wrong Header/ Maybe even wrong page");
+    }
+
+    @Then("I fill out new notification message: {string}")
+    public void iFillOutNewNotificationMessage(String arg0) {
+
     }
 }
