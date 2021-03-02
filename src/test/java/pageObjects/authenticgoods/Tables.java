@@ -9,6 +9,8 @@ import pageObjects.authenticgoods.Navigation.Navigation;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class Tables extends CommonPage {
@@ -122,8 +124,9 @@ public class Tables extends CommonPage {
 
     public List<String> readTestData() {
         List<String> lines = new ArrayList<>();
+        Charset cs= StandardCharsets.UTF_8;
         try {
-            lines = FileUtils.readLines(new File("src/test/resources/output.txt"));
+            lines = FileUtils.readLines(new File("src/test/resources/output.txt"), cs);
         } catch (IOException e) {
             e.printStackTrace();
         }
