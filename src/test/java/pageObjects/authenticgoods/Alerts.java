@@ -33,7 +33,8 @@ public class Alerts extends CommonPage {
 
     }
 
-    public void readNotification() {
-
+    public String readNotification(String messageText) {
+        By locator = By.xpath("//*[@class='ng-scope ng-binding'][contains(text(),'" + messageText + "')]");
+        return getClickableElement(locator).getText();
     }
 }

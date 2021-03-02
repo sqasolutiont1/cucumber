@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CommonPage {
 
-    static WebDriver driver;
+    static public WebDriver driver;
     Wait<WebDriver> wait;
     String URL = TestURLs.MainURL;
 
@@ -64,7 +64,7 @@ public class CommonPage {
     }
 
     public void quit() {
-        driver.close();
+        //driver.close();
     }
 
     public void navigate() {

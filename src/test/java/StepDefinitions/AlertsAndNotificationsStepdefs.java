@@ -30,4 +30,11 @@ public class AlertsAndNotificationsStepdefs {
         alerts.fillinTextField(messageText);
         alerts.pressAddNotificationBtn();
     }
+
+    @Then("I read the notification message : {string}")
+    public void iReadTheNotificationMessage(String messageText) {
+        String txt = alerts.readNotification(messageText);
+        System.out.println(txt);
+       Assert.assertEquals(txt, messageText, "Wrong message on the notification");
+    }
 }
