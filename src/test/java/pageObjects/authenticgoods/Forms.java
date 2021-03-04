@@ -3,6 +3,7 @@ package pageObjects.authenticgoods;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import java.io.File;
@@ -60,5 +61,15 @@ public class Forms extends CommonPage {
 
     public void filloutPassword(String arg0) {
         getElement(By.cssSelector("[type='password']")).sendKeys(arg0);
+    }
+
+    public void selectMultiple(String arg0, String arg1, String arg2) {
+        Select select = new Select(getClickableElement(By.xpath("//div[4]//select[1]")));
+        if (select.isMultiple()){
+            select.selectByValue(arg0);
+            select.selectByValue(arg1);
+            select.selectByValue(arg2);
+        }
+
     }
 }

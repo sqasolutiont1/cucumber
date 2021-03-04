@@ -32,4 +32,9 @@ public class FormsSD {
     public void formsIAttachFileToTheForm(String arg0) {
         forms.attachTheFile(arg0);
     }
+
+    @When("Forms. I select from multiple element: {string}, {string}, {string}")
+    public void formsISelectFromThatElement(String arg0, String arg1, String arg2) {
+        forms.selectMultiple(arg0, arg1, arg2);
+    }
 }
