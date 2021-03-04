@@ -12,11 +12,13 @@ public class Wizard extends CommonPage {
 
     public void setFirstName(String value) {
         By locator = By.name("firstName");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
     public void setLastName(String value) {
         By locator = By.name("lastName");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
@@ -27,21 +29,25 @@ public class Wizard extends CommonPage {
 
     public void setAddress(String value) {
         By locator = By.name("streetAddress");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
     public void setCity(String value) {
         By locator = By.name("city");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
     public void setState(String value) {
         By locator = By.name("state");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
     public void setZIP(String value) {
         By locator = By.name("postalCode");
+        getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
 
