@@ -57,4 +57,18 @@ public class Wizard extends CommonPage {
                 " this: " + getElement(locator).getText() + " instead of " + arg0);
 
     }
+
+    public void navigateToWizardPage() {
+        getClickableElement(By.cssSelector("[title='Forms']")).click();
+        getClickableElement(By.cssSelector("[title='Wizard']")).click();
+        waitForPageLoad();
+    }
+
+    public void pressSubmitBtn() {
+        getClickableElement(By.cssSelector("button[class='btn btn-primary ng-scope']")).click();
+    }
+
+    public void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
 }
