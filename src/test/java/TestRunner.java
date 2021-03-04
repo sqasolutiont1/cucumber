@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
                     "html:target/cucumber-reports/cucumber.html",
                     "json:target/cucumber-reports/cucumber.json"
             },
-            features = {"src/test/resources/wizard"},
+            features = {"src/test/resources"},
             glue = {"StepDefinitions"}
     )
     public class TestRunner extends AbstractTestNGCucumberTests {

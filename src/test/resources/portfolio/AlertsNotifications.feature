@@ -27,6 +27,5 @@ Feature: I'm demonstrating ow I'm working with WebElements
       |Second message |
       |Third message  |
       |Fourth message |
-    #Then I will wait for "3" seconds
 
 
