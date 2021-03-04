@@ -46,11 +46,6 @@ public class WizardSD {
         wizard.verifyStepLabel(arg0);
     }
 
-    @When("Wizard. I check First Name, I see: {string}")
-    public void iCheckFirstNameISee(String arg0) {
-        wizard.checkFirstName(arg0);
-    }
-
     @Then("Wizard. I press Submit button")
     public void wizardIPressSubmitButton() {
         wizard.pressSubmitBtn();
@@ -59,5 +54,12 @@ public class WizardSD {
     @And("Wizard. I accept the alert")
     public void wizardIAcceptTheAlert() {
         wizard.acceptAlert();
+    }
+
+    @Then("Wizard. I check data on last step: {string}, {string}, {string}, {string},{string}, {string}")
+    public void wizardICheckDataOnLastStep(String firstName, String lastName, String streetAddress, String city, String state, String zip) {
+        wizard.checkFirstName(firstName);
+        wizard.checkLastName(lastName);
+        wizard.checkAddress(streetAddress,city,state,zip);
     }
 }

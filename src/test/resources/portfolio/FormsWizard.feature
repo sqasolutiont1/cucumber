@@ -7,8 +7,9 @@ Feature: Test Automation for Forms
     And Wizard. I press Next Button
     Then Wizard. I press Submit button
     And Wizard. I accept the alert
+    Then Wizard. I check data on last step: "<First Name>", "<Last name>", "<Street Address>", "<City>","<State>", "<Zip>"
         Examples:
       |First Name  | Last name | Street Address| City|State|Zip|
       |First Name  | Last name | Street Address| City|State|Zip|
-      |First Name  | Last name | Street Address| City|State|Zip|
+
 

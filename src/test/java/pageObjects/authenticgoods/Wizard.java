@@ -77,4 +77,17 @@ public class Wizard extends CommonPage {
     public void acceptAlert() {
         driver.switchTo().alert().accept();
     }
+
+    public void checkLastName(String arg0) {
+        By locator = By.xpath("//*[normalize-space()='Last Name:']/../p");
+        Assert.assertEquals(getClickableElement(locator).getText(), arg0, "Last name doesn't match: " + " getting " +
+                " this: " + getElement(locator).getText() + " instead of " + arg0);
+    }
+
+    public void checkAddress(String streetAddress,String city,String state,String zip) {
+        By locator = By.xpath("//*[normalize-space()='Address:']/../p");
+        Assert.assertEquals(getClickableElement(locator).getText(), streetAddress+ "\n" +
+                city + ", " + state + " " + zip, "Address doesn't match: " + " getting " +
+                " this: " + getElement(locator).getText() + " instead of " + streetAddress);
+    }
 }
