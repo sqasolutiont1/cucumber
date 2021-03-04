@@ -72,4 +72,11 @@ public class Forms extends CommonPage {
         }
 
     }
+
+    public boolean isCheckBox1Checked() {
+        By locator = By.cssSelector("div[class='radio'] div[class='icheckbox_flat-grey']");
+        getClickableElement(locator).click();
+        By checkedLocator = By.cssSelector("div[class='radio'] div[class='icheckbox_flat-grey checked']");
+        return getClickableElement(checkedLocator).isDisplayed();
+    }
 }

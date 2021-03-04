@@ -12,5 +12,5 @@ Background:
   Scenario: Select items in selectors
     When Forms. I select from multiple element: "2", "3", "4"
 
-  #Scenario: Check uncheck checkboxes
-
+  Scenario: Check uncheck checkboxes
+    When Forms. I check if the check box is checked

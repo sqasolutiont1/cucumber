@@ -37,4 +37,9 @@ public class FormsSD {
     public void formsISelectFromThatElement(String arg0, String arg1, String arg2) {
         forms.selectMultiple(arg0, arg1, arg2);
     }
+
+    @When("Forms. I check if the check box is checked")
+    public void formsICheckIfTheCheckBoxIsChecked() {
+        forms.isCheckBox1Checked();
+    }
 }
