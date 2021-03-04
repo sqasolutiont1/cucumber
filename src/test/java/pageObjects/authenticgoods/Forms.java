@@ -49,8 +49,7 @@ public class Forms extends CommonPage {
     }
 
     public void attachTheFile(String arg0) {
-        By locator = By.id("exampleInputFile");
-        getElement(locator).sendKeys(arg0);
+        getElement(By.id("exampleInputFile")).sendKeys(System.getProperty("user.dir") + arg0);
     }
 
     public void navigateToForms(){
@@ -59,4 +58,7 @@ public class Forms extends CommonPage {
         getClickableElement(By.cssSelector("[title='Components']")).click();
     }
 
+    public void filloutPassword(String arg0) {
+        getElement(By.cssSelector("[type='password']")).sendKeys(arg0);
+    }
 }
