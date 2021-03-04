@@ -75,7 +75,15 @@ public class Wizard extends CommonPage {
     }
 
     public void acceptAlert() {
+        /**
+         *
+         */
+
         driver.switchTo().alert().accept();
+    }
+
+    public String getAlertText(){
+        return driver.switchTo().alert().getText();
     }
 
     public void checkLastName(String arg0) {

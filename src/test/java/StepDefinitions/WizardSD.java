@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.testng.Assert;
 import pageObjects.authenticgoods.Wizard;
 
 public class WizardSD {
@@ -61,5 +62,10 @@ public class WizardSD {
         wizard.checkFirstName(firstName);
         wizard.checkLastName(lastName);
         wizard.checkAddress(streetAddress,city,state,zip);
+    }
+
+    @Then("Wizard. I check Alert message: {string}")
+    public void wizardICheckAlertMessage(String message) {
+        Assert.assertEquals(wizard.getAlertText(), message, "Getting the wrong message on alert");
     }
 }
