@@ -1,5 +1,6 @@
 package pageObjects.authenticgoods;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -77,19 +78,32 @@ public class Sliders extends CommonPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement elementSlider = getClickableElement(locator);
         WebElement elementHandle = getClickableElement(handle);
-        String initialPercent = elementSlider.getAttribute("style");
+        String argumentsValue = elementSlider.getAttribute("style");
 
-        System.out.println("initialPercent:" + initialPercent);
-        double dInit = Double.parseDouble(initialPercent);
+        String initValue = StringUtils.substringBefore(argumentsValue.substring(argumentsValue.indexOf("width: ") + 6), "%;");
+        /*
+        if init value is more than target value -> this is what we got at the start.
+        If init value id equal to target -> nothing supposed to be done
+        If init value is less than target -> we should decrease , not increase the value which we sending to arguments
+        if init value doesn't match starting value -> we should adjust it. and make this adjustment smooth. as usual.
+         */
         double dArg0 = Double.parseDouble(arg0);
         double dArg1 = Double.parseDouble(arg1);
-        double step = 0.1;
-        for (double i=dArg0; i<dArg1 ; i=i+step){
-            dArg0 = dArg0 + step;
+        double step = 10;
+//        for (double i=dArg0; i<dArg1 ; i=i+step){
+//            dArg0 = dArg0 + step;
+//            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
+//            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
+//            System.out.println(dArg0);
+//        }
+        /**
+         * if we need to decrease the value this is the loop for that
+         */
+        for(double i=dArg0; i>dArg1 ; i=i-step){
+            dArg0 = dArg0 - step;
             js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
             js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
             System.out.println(dArg0);
         }
-
     }
 }
