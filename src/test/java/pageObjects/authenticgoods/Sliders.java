@@ -13,8 +13,8 @@ public class Sliders extends CommonPage {
     }
 
     public void slide(int percent) throws InterruptedException {
-        By locator = By.cssSelector("[class='slider-selection']");
-        By handle = By.cssSelector("[class='slider-handle round']");
+        By locator = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-selection']");
+        By handle = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-handle round']");
 //TODO:
         /**
          * initial percent.
@@ -66,11 +66,30 @@ public class Sliders extends CommonPage {
     public void navigateToSliders() {
         navigate();
         getClickableElement(By.cssSelector("[title='UI Elements']")).click();
-        getClickableElement(By.cssSelector("[title='Sliders & Progress']"));
+        getClickableElement(By.cssSelector("[title='Sliders & Progress']")).click();
         waitForPageLoad();
     }
 
     public void moveFromTo(String arg0, String arg1) {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        By locator = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-selection']");
+        By handle = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-handle round']");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement elementSlider = getClickableElement(locator);
+        WebElement elementHandle = getClickableElement(handle);
+        String initialPercent = elementSlider.getAttribute("style");
+        System.out.println("initialPercent:" + initialPercent);
 
+        js.executeScript("arguments[0].setAttribute('style', 'top: 10.0%')", elementSlider);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        js.executeScript("arguments[0].setAttribute('style', 'top: 10.0%')", elementHandle);
     }
 }
