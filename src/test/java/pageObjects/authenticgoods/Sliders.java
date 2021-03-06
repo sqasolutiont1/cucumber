@@ -71,8 +71,6 @@ public class Sliders extends CommonPage {
     }
 
     public void moveFromTo(String arg0, String arg1) {
-        String init = "17.5";
-
         By locator = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-selection']");
         By handle = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-handle round']");
 
@@ -82,7 +80,7 @@ public class Sliders extends CommonPage {
         String initialPercent = elementSlider.getAttribute("style");
 
         System.out.println("initialPercent:" + initialPercent);
-        double dInit = Double.parseDouble(init);
+        double dInit = Double.parseDouble(initialPercent);
         double dArg0 = Double.parseDouble(arg0);
         double dArg1 = Double.parseDouble(arg1);
         double step = 0.1;
