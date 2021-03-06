@@ -103,4 +103,10 @@ public class Forms extends CommonPage {
         getClickableElement(By.cssSelector("[title='Forms']")).click();
         getClickableElement(By.cssSelector("[title='Multiple File Upload']")).click();
     }
+    public void navigateMasks() {
+        navigate();
+        getClickableElement(By.cssSelector("[title='Forms']")).click();
+        getClickableElement(By.cssSelector("[title='Mask']")).click();
+    }
+
 }

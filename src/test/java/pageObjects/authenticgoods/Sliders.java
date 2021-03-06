@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
+import java.util.Random;
+
 public class Sliders extends CommonPage {
 
     public static final String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/index.html#/ui/sliders-progress";
@@ -90,20 +92,34 @@ public class Sliders extends CommonPage {
         double dArg0 = Double.parseDouble(arg0);
         double dArg1 = Double.parseDouble(arg1);
         double step = 10;
-//        for (double i=dArg0; i<dArg1 ; i=i+step){
-//            dArg0 = dArg0 + step;
-//            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
-//            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
-//            System.out.println(dArg0);
-//        }
-        /**
-         * if we need to decrease the value this is the loop for that
-         */
-        for(double i=dArg0; i>dArg1 ; i=i-step){
+
+        if (initValue.equals(Double.toString(dArg1))){
+            System.out.println("do nothing");
+        }
+
+        for (double i=dArg0; i<=dArg1 ; i=i+step){
+            dArg0 = dArg0 + step;
+            executeTheScript(elementSlider,elementHandle, js,dArg0);
+        }
+
+        for(double i=dArg0; i>=dArg1 ; i=i-step){
+            executeTheScript(elementSlider,elementHandle, js,dArg0);
             dArg0 = dArg0 - step;
-            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
-            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
-            System.out.println(dArg0);
         }
     }
+
+    private void getTheLoop(){
+
+    }
+    private void executeTheScript(WebElement elementSlider, WebElement elementHandle, JavascriptExecutor js, double dArg0){
+        js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
+        js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
+        System.out.println(dArg0);
+    }
+    /**
+     * get the list of the sliders
+     * make a loop through this list
+     * for each element of this list execute function which will move the slider to the required position
+     * here is the trick - by default all the elements will be moving one by one, not in the same time
+     */
 }

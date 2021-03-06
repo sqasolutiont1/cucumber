@@ -60,4 +60,9 @@ public class FormsSD {
     public void formsINavigateToMultipleFileUpload() {
         forms.navigateToMultipleFileUpload();
     }
+    @Given("Forms. I navigate to Masks")
+    public void formsINavigateToMask() {
+        forms.navigateMasks();
+    }
+
 }
