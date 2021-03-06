@@ -71,32 +71,24 @@ public class Sliders extends CommonPage {
     }
 
     public void moveFromTo(String arg0, String arg1) {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         String init = "17.5";
 
         By locator = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-selection']");
         By handle = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-handle round']");
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement elementSlider = getClickableElement(locator);
         WebElement elementHandle = getClickableElement(handle);
         String initialPercent = elementSlider.getAttribute("style");
+
         System.out.println("initialPercent:" + initialPercent);
         double dInit = Double.parseDouble(init);
         double dArg0 = Double.parseDouble(arg0);
         double dArg1 = Double.parseDouble(arg1);
-
-        for (double i=dArg0; i<dArg1 ; i=i+0.5){
-            dArg0 = dArg0 + 0.5;
+        double step = 0.1;
+        for (double i=dArg0; i<dArg1 ; i=i+step){
+            dArg0 = dArg0 + step;
             js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
             System.out.println(dArg0);
         }
