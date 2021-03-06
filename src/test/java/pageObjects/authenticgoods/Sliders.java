@@ -62,4 +62,15 @@ public class Sliders extends CommonPage {
         js.executeScript("arguments[0].setAttribute('style', 'left: 60.0%')", elementHandle);
         Thread.sleep(10000);
     }
+
+    public void navigateToSliders() {
+        navigate();
+        getClickableElement(By.cssSelector("[title='UI Elements']")).click();
+        getClickableElement(By.cssSelector("[title='Sliders & Progress']"));
+        waitForPageLoad();
+    }
+
+    public void moveFromTo(String arg0, String arg1) {
+
+    }
 }

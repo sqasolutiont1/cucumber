@@ -1,8 +1,10 @@
 Feature: I'm demonstrating ow I'm working with WebElements
-
-  Scenario: Move horizontal Slider
+Background:
+  Given I navigate to Sliders
+  #Scenario: Move horizontal Slider
   Scenario: Move vertical Slider
-  Scenario: Move Slider range
-  Scenario: Move Progress
+    When I move slider from "" to ""
+  #Scenario: Move Slider range
+  #Scenario: Move Progress
 
 

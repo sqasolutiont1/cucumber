@@ -1,9 +1,16 @@
 package StepDefinitions;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.remote.RemoteWebElement;
 import pageObjects.authenticgoods.Forms;
+
+import java.io.File;
 
 public class FormsSD {
     Forms forms = new Forms();
@@ -41,5 +48,16 @@ public class FormsSD {
     @When("Forms. I check if the check box is checked")
     public void formsICheckIfTheCheckBoxIsChecked() {
         forms.isCheckBox1Checked();
+    }
+
+    @When("I drag and drop from OS")
+    public void iDragAndDropFromOS() {
+        forms.attachTheFiles("/src/main/resources/zipFile.zip");
+        forms.attachTheFiles("/src/main/resources/validemails.txt");
+    }
+
+    @Given("Forms. I navigate to Multiple File Upload")
+    public void formsINavigateToMultipleFileUpload() {
+        forms.navigateToMultipleFileUpload();
     }
 }
