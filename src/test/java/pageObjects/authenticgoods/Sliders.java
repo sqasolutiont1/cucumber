@@ -76,6 +76,8 @@ public class Sliders extends CommonPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        String init = "17.5";
+
         By locator = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-selection']");
         By handle = By.xpath("//div[@class='slider slider-default']//div[@class='slider slider-vertical']//div[@class='slider-handle round']");
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -83,13 +85,21 @@ public class Sliders extends CommonPage {
         WebElement elementHandle = getClickableElement(handle);
         String initialPercent = elementSlider.getAttribute("style");
         System.out.println("initialPercent:" + initialPercent);
+        double dInit = Double.parseDouble(init);
+        double dArg0 = Double.parseDouble(arg0);
+        double dArg1 = Double.parseDouble(arg1);
 
-        js.executeScript("arguments[0].setAttribute('style', 'top: 10.0%')", elementSlider);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (double i=dArg0; i<dArg1 ; i=i+0.5){
+            dArg0 = dArg0 + 0.5;
+            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementSlider);
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            js.executeScript("arguments[0].setAttribute('style', 'top: " + dArg0 + "%')", elementHandle);
+            System.out.println(dArg0);
         }
-        js.executeScript("arguments[0].setAttribute('style', 'top: 10.0%')", elementHandle);
+
     }
 }
