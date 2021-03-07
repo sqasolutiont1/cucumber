@@ -11,11 +11,16 @@ public class Modals extends CommonPage {
     public void hoverOverButton1(){
         Actions actions = new Actions(driver);
         WebElement element = getClickableElement(By.cssSelector("button[tooltip-placement='right']"));
-        actions.moveToElement(element).build().perform();
+        actions.moveToElement(element).perform();
     }
 
     public void navigateTo() {
         navigate();
         navigation.navigateToModals();
+    }
+
+    public String getToolTipForButton1() {
+        By locator = By.cssSelector("[class='tooltip right in fade']");
+        return getClickableElement(locator).getText();
     }
 }

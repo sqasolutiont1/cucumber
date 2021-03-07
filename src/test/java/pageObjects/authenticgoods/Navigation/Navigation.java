@@ -26,7 +26,7 @@ public class Navigation extends CommonPage {
 
     public void navigateToModals() {
         pressOnUIElementsMenuItem();
-        getClickableElement(By.cssSelector("[title='Modals']")).click();
+        getClickableElement(By.cssSelector("[title='Modals & Popups']")).click();
         waitForPageLoad();
     }
 }
