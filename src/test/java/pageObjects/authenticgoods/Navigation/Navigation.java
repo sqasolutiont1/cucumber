@@ -23,5 +23,11 @@ public class Navigation extends CommonPage {
         getClickableElement(By.cssSelector("[title='Data Tables']")).click();
         waitForPageLoad();
     }
+
+    public void navigateToModals() {
+        pressOnUIElementsMenuItem();
+        getClickableElement(By.cssSelector("[title='Modals']")).click();
+        waitForPageLoad();
+    }
 }
 
