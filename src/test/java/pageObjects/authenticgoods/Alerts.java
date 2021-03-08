@@ -1,12 +1,16 @@
 package pageObjects.authenticgoods;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pageObjects.authenticgoods.Navigation.Navigation;
 
 public class Alerts extends CommonPage {
     Navigation navigation = new Navigation();
 
+    public Alerts(){
+        super();
+    }
     public void navigateToAlertPage() {
         navigate();
         navigation.pressOnAlertsMenuItem();

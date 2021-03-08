@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import pageObjects.authenticgoods.Alerts;
+import pageObjects.authenticgoods.CommonPage;
 
 import java.util.List;
 import java.util.Map;

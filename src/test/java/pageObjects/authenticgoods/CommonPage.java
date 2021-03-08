@@ -1,5 +1,6 @@
 package pageObjects.authenticgoods;
 
+import io.cucumber.java.bs.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -13,14 +14,13 @@ import java.util.List;
 
 public class CommonPage {
 
-    static public WebDriver driver;
+    static WebDriver driver;
     Wait<WebDriver> wait;
     String URL = TestURLs.MainURL;
 
-
     public CommonPage() {
-        if (driver == null) {
-            driver = OurDriver.localDriver();
+        if (driver == null){
+            driver = new OurDriver().localDriver();
         }
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(10))
@@ -64,7 +64,10 @@ public class CommonPage {
     }
 
     public void quit() {
-        //driver.close();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 
     public void navigate() {
