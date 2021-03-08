@@ -1,17 +1,14 @@
 package StepDefinitions;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import pageObjects.authenticgoods.Tables;
 
 import java.util.List;
-import java.util.Map;
 
 public class TablesStepdefs {
     Tables tables = new Tables();

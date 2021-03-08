@@ -3,15 +3,9 @@ package pageObjects.authenticgoods;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
 
@@ -22,13 +16,14 @@ public class Forms extends CommonPage {
         getElement(locator).clear();
         getElement(locator).sendKeys(value);
     }
+
     public void setEmail(boolean isValid) {
         By locator = By.id("exampleInputEmail1");
         String MAIN_PATH = "src/main/resources/";
         File file;
         if (isValid) {
             file = FileUtils.getFile(MAIN_PATH + "validemails.txt");
-        } else{
+        } else {
             file = FileUtils.getFile(MAIN_PATH + "invalidemails.txt");
         }
 
@@ -45,7 +40,7 @@ public class Forms extends CommonPage {
         }
     }
 
-    public void pressSubmitButton(){
+    public void pressSubmitButton() {
         getClickableElement(By.xpath("//button[normalize-space()='Submit']")).click();
     }
 
@@ -66,12 +61,12 @@ public class Forms extends CommonPage {
 //        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, null);
 
 
-       // By locator = By.cssSelector("[class='dropzone ng-pristine ng-valid dz-clickable']");
+        // By locator = By.cssSelector("[class='dropzone ng-pristine ng-valid dz-clickable']");
         getClickableElement(locator).click();
         getElement(locator).sendKeys(System.getProperty("user.dir") + arg0);
     }
 
-    public void navigateToForms(){
+    public void navigateToForms() {
         navigate();
         getClickableElement(By.cssSelector("[title='Forms']")).click();
         getClickableElement(By.cssSelector("[title='Components']")).click();
@@ -83,7 +78,7 @@ public class Forms extends CommonPage {
 
     public void selectMultiple(String arg0, String arg1, String arg2) {
         Select select = new Select(getClickableElement(By.xpath("//div[4]//select[1]")));
-        if (select.isMultiple()){
+        if (select.isMultiple()) {
             select.selectByValue(arg0);
             select.selectByValue(arg1);
             select.selectByValue(arg2);
@@ -103,6 +98,7 @@ public class Forms extends CommonPage {
         getClickableElement(By.cssSelector("[title='Forms']")).click();
         getClickableElement(By.cssSelector("[title='Multiple File Upload']")).click();
     }
+
     public void navigateMasks() {
         navigate();
         getClickableElement(By.cssSelector("[title='Forms']")).click();

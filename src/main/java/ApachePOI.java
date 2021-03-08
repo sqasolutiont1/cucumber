@@ -1,6 +1,4 @@
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -8,7 +6,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 public class ApachePOI {
     public static void main(String[] args) {
@@ -24,7 +21,7 @@ public class ApachePOI {
          * adding data to the sheet
          */
         Object[][] bookData = {
-                {"Head First Java", "Kathy Serria","79"},
+                {"Head First Java", "Kathy Serria", "79"},
                 {"Effective Java", "Joshua Bloch", "36"},
                 {"Clean Code", "Robert martin", "42"},
                 {"Thinking in Java", "Bruce Eckel", "35"},

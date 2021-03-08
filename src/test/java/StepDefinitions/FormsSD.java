@@ -4,13 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.remote.RemoteWebElement;
 import pageObjects.authenticgoods.Forms;
-
-import java.io.File;
 
 public class FormsSD {
     Forms forms = new Forms();

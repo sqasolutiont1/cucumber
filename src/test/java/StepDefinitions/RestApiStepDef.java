@@ -2,14 +2,11 @@ package StepDefinitions;
 
 import io.cucumber.java.en.When;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.internal.common.assertion.Assertion;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 
-import java.io.File;
 import java.io.IOException;
 
 import static io.restassured.RestAssured.given;

@@ -1,6 +1,5 @@
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
-import org.apache.commons.io.filefilter.SuffixFileFilter;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +17,6 @@ public class Files {
 //        File file2 = FileUtils.getFile(MAIN_PATH + "cmpFile2.txt");
 //        System.out.println("Are cmpFile1 and cmpFile2 equal: " +
 //                FileUtils.contentEquals(file1, file2));
-
 
 
         // We can copy a whole path somewhere

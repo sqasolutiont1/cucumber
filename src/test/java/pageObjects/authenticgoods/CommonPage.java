@@ -1,6 +1,5 @@
 package pageObjects.authenticgoods;
 
-import io.cucumber.java.bs.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
