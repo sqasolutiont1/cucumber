@@ -28,7 +28,7 @@ public class CommonPage {
             driver = new OurDriver().localDriver();
         }
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(10))
+                .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(50))
                 .ignoring(NoSuchElementException.class);
     }
@@ -53,7 +53,7 @@ public class CommonPage {
             webElement = wait.until(ExpectedConditions.elementToBeClickable(locator));
         }catch (TimeoutException timeoutException){
             getScreenShot();
-            Logger.getLogger(CommonPage.class).fatal(timeoutException);
+            Logger.getLogger(CommonPage.class).fatal(timeoutException.getMessage());
         }
         return webElement;
     }

@@ -11,7 +11,7 @@ public class Wizard extends CommonPage {
     }
 
     public void setFirstName(String value) {
-        By locator = By.name("firstName");
+        By locator = By.name("FirstName");
         getClickableElement(locator).clear();
         getClickableElement(locator).sendKeys(value);
     }
