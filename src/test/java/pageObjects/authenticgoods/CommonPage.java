@@ -1,6 +1,11 @@
 package pageObjects.authenticgoods;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.LineIterator;
+import org.apache.commons.lang3.StringUtils;
+import org.bouncycastle.util.encoders.UTF8;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -14,8 +19,10 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.List;
+import java.util.*;
 
 public class CommonPage {
 
@@ -37,14 +44,19 @@ public class CommonPage {
      * Important, KEEP IT. USE IT
      */
     public void waitForPageLoad() {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 30);
-        wait.until(driver -> {
-            System.out.println("Current Window State       : "
-                    + ((JavascriptExecutor) driver).executeScript("return document.readyState"));
-            return String
-                    .valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
-                    .equals("complete");
-        });
+        //Wait<WebDriver> wait = new WebDriverWait(driver, 30);
+        try{
+            wait.until(driver -> {
+                System.out.println("Current Window State       : "
+                        + ((JavascriptExecutor) driver).executeScript("return document.readyState"));
+                return String
+                        .valueOf(((JavascriptExecutor) driver).executeScript("return document.readyState"))
+                        .equals("complete");
+            });
+        } catch (TimeoutException timeoutException){
+            getScreenShot();
+            Logger.getLogger(CommonPage.class).fatal(timeoutException.getMessage());
+        }
     }
 
     public WebElement getClickableElement(By locator) {
@@ -53,22 +65,21 @@ public class CommonPage {
             webElement = wait.until(ExpectedConditions.elementToBeClickable(locator));
         }catch (TimeoutException timeoutException){
             getScreenShot();
+            saveToLogFile(timeoutException.getMessage());
             Logger.getLogger(CommonPage.class).fatal(timeoutException.getMessage());
         }
         return webElement;
     }
 
     public WebElement getElement(By locator) {
-        return wait.until(driver -> driver.findElement(locator));
-    }
-
-    public void sendKeysRedefined(WebElement element, String value, int delay) {
+        WebElement webElement = null;
         try {
-            Thread.sleep(delay * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            webElement = wait.until(driver -> driver.findElement(locator));
+        }catch (TimeoutException timeoutException){
+            getScreenShot();
+            Logger.getLogger(CommonPage.class).fatal(timeoutException.getMessage());
         }
-        element.sendKeys(value);
+        return webElement;
     }
 
     public List<WebElement> getElements(By locator) {
@@ -83,8 +94,13 @@ public class CommonPage {
     }
 
     public void navigate() {
+        saveToLogFile("Navigating to the webpage: " + URL);
         driver.navigate().to(URL);
+        saveToLogFile("Navigated: " + URL);
+        saveToLogFile("Waiting for page to load: " + URL);
         waitForPageLoad();
+        saveToLogFile("Page loaded: " + URL);
+
     }
     public void navigate(String url) {
         driver.navigate().to(url);
@@ -159,5 +175,41 @@ public class CommonPage {
             e.printStackTrace();
         }
 
+    }
+
+    public void getCookies(){
+        Set<Cookie> cookies = driver.manage().getCookies();
+
+        if (cookies.size() == 0) { // To support FF and IE
+            String cookiesString = (String) ((JavascriptExecutor) driver).executeScript("return document.cookie");
+            cookies = parseBrowserCookies(cookiesString);
+        }
+        String my_new_str = cookies.toString().replace(";", ";\n");
+
+        System.out.println(my_new_str);
+    }
+
+    private Set<Cookie> parseBrowserCookies(String cookiesString) {
+        Set<Cookie> cookies = new HashSet<>();
+
+        if (StringUtils.isBlank(cookiesString)) {
+            return cookies;
+        }
+
+        Arrays.asList(cookiesString.split("; ")).forEach(cookie -> {
+            String[] splitCookie = cookie.split("=", 2);
+            cookies.add(new Cookie(splitCookie[0], splitCookie[1], "/"));
+        });
+
+        return cookies;
+    }
+
+    public void saveToLogFile(String errorMessagesData) {
+        File fileToWrite1 = FileUtils.getFile("src/test/logs/" + "log.txt");
+        try {
+            FileUtils.write(fileToWrite1, errorMessagesData+"\n", StandardCharsets.UTF_8, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,18 +2,26 @@ package pageObjects.authenticgoods;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.log4testng.Logger;
 
 public class Wizard extends CommonPage {
     public static String URL = "http://authenticgoods.co/wrapbootstrap/themes/neuboard-v1.4.3/Angular_full_version/#/forms/wizard/step_one";
-
     public Wizard() {
         super();
     }
 
     public void setFirstName(String value) {
+        saveToLogFile("Setting first name as: " + value);
+
+        Logger.getLogger(CommonPage.class).info("Setting first name as: " + value);
         By locator = By.name("FirstName");
+        saveToLogFile("Clearing the text field" + locator.toString());
+
         getClickableElement(locator).clear();
+        saveToLogFile("Clicking");
+        saveToLogFile("Filling out: " + value);
         getClickableElement(locator).sendKeys(value);
+        saveToLogFile("Filled in: " + value);
     }
 
     public void setLastName(String value) {

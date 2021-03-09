@@ -16,7 +16,7 @@ public class OurDriver {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         options.addArguments("--silent");
-        //options.addArguments("headless");
+        options.addArguments("headless");
         options.addArguments("log-level=3");
         options.addArguments("--disable-logging");
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
