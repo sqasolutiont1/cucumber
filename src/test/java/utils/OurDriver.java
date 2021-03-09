@@ -3,13 +3,11 @@ package utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.util.logging.Level;
 
 public class OurDriver {
@@ -18,7 +16,7 @@ public class OurDriver {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         options.addArguments("--silent");
-        options.addArguments("headless");
+        //options.addArguments("headless");
         options.addArguments("log-level=3");
         options.addArguments("--disable-logging");
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);

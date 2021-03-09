@@ -1,7 +1,7 @@
 package pageObjects.authenticgoods;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.remote.http.HttpClient;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -9,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.authenticgoods.Navigation.TestURLs;
 import utils.OurDriver;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.Duration;
@@ -140,5 +142,14 @@ public class CommonPage {
         }
     }
 
+    public void getScreenShot() {
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            //The below method will save the screen shot in destination directory with name "screenshot.png"
+        try {
+            FileHandler.copy(scrFile, new File("src/test/screenshots/test.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
 }
