@@ -3,6 +3,7 @@ package pageObjects.authenticgoods;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
@@ -78,12 +79,24 @@ public class Forms extends CommonPage {
 
     public void selectMultiple(String arg0, String arg1, String arg2) {
         Select select = new Select(getClickableElement(By.xpath("//div[4]//select[1]")));
-        if (select.isMultiple()) {
-            select.selectByValue(arg0);
-            select.selectByValue(arg1);
-            select.selectByValue(arg2);
-        }
+//        if (select.isMultiple()) {
+//            select.selectByValue(arg0);
+//            select.selectByValue(arg1);
+//            select.selectByValue(arg2);
+//        }
+//        getClickableElement(By.xpath("//option[@value='1']")).click();
+//        getClickableElement(By.xpath("//option[@value='2']")).click();
+//        getClickableElement(By.xpath("//option[@value='3']")).click();
 
+        Actions actions = new Actions(driver);
+// Move the cursor to the position of element C.
+        actions.moveToElement(getClickableElement(By.xpath("//option[@value='1']"))); // Call clickAndHold() method to perform click and hold operation.
+        actions.click().perform();
+        //actions.release().perform();
+        actions.moveToElement(getClickableElement(By.xpath("//option[@value='2']"))); // Call clickAndHold() method to perform click and hold operation.
+        actions.click().perform();
+        actions.moveToElement(getClickableElement(By.xpath("//option[@value='3']"))); // Call clickAndHold() method to perform click and hold operation.
+        actions.click().perform();
     }
 
     public boolean isCheckBox1Checked() {
