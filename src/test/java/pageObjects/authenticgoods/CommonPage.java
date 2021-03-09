@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.log4testng.Logger;
 import pageObjects.authenticgoods.Navigation.TestURLs;
 import utils.OurDriver;
 
@@ -47,7 +48,14 @@ public class CommonPage {
     }
 
     public WebElement getClickableElement(By locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+        WebElement webElement = null;
+        try{
+            webElement = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        }catch (TimeoutException timeoutException){
+            getScreenShot();
+            Logger.getLogger(CommonPage.class).fatal(timeoutException);
+        }
+        return webElement;
     }
 
     public WebElement getElement(By locator) {
