@@ -1,16 +1,10 @@
 package pageObjects.authenticgoods;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.LineIterator;
 import org.apache.commons.lang3.StringUtils;
-import org.bouncycastle.util.encoders.UTF8;
 import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.log4testng.Logger;
 import pageObjects.authenticgoods.Navigation.TestURLs;
 import utils.OurDriver;
@@ -19,10 +13,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class CommonPage {
 
@@ -37,7 +33,8 @@ public class CommonPage {
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(5))
                 .pollingEvery(Duration.ofMillis(50))
-                .ignoring(NoSuchElementException.class);
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
     }
 
     /**
@@ -211,5 +208,13 @@ public class CommonPage {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Boolean isInvisible(By locator){
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
+    public Boolean isInvisible(WebElement webElement){
+        return wait.until(ExpectedConditions.invisibilityOf(webElement));
     }
 }
