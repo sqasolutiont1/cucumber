@@ -9,6 +9,12 @@ import java.util.Collection;
 public class Files {
     private static final String MAIN_PATH = "src/main/resources/";
 
+    public static void printTheThing(){
+        System.out.println("Print");
+    }
+    public void printTheWholeThing(){
+        System.out.println("Print");
+    }
     public static void main(String[] args) throws IOException {
 
         // file1: "Hello World!"
