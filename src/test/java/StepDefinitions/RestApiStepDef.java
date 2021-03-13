@@ -71,4 +71,29 @@ public class RestApiStepDef {
         }
 
     }
+
+    @When("I call for the random joke, I get it")
+    public void iCallForTheRandomJokeIGetIt() {
+        request = new RequestSpecBuilder().
+                addHeader("x-rapidapi-key","ab88a28a99msh5911ffd6faa9e68p1dfe95jsn0573c0c1775a").
+                addHeader("x-rapidapi-host","jokeapi-v2.p.rapidapi.com").
+                addHeader("useQueryString","true").
+                setBaseUri("https://jokeapi-v2.p.rapidapi.com").
+                build().body("{\n" +
+                "\t\"contains\": \"C%23\",\n" +
+                "\t\"format\": \"json\",\n" +
+                "\t\"blacklistFlags\": \"nsfw,racist\",\n" +
+                "\t\"idRange\": \"0-150\",\n" +
+                "\t\"type\": \"single,twopart\"\n" +
+                "}");
+        Response response = given().
+                spec(request).
+                when().
+                get("/joke/Any");
+        int responseCode = response.then().assertThat().extract().response().getStatusCode();
+        Assert.assertEquals(responseCode, 200);
+        //System.out.println(response.then().extract().body().jsonPath().prettify());
+        System.out.println(response.then().extract().body().jsonPath().get("setup").toString());
+        System.out.println(response.then().extract().body().jsonPath().get("delivery").toString());
+    }
 }
