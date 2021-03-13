@@ -149,9 +149,13 @@ public class Tables extends CommonPage {
         By locator = By.xpath("//h1[normalize-space()='Basic Tables']");
         Assert.assertEquals(getClickableElement(locator).getText(), basicHeader);
     }
-    List<List<String>> actualData = new ArrayList<List<String>>();
 
     public List<List<String>> readColumns() {
+        /**
+         * Create list of the lists to hold all teh data read form cells
+         */
+        List<List<String>> actualData = new ArrayList<>();
+
         /**
          * Creating the selector for rows. All teh rows of the table.
          */
