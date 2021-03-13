@@ -2,6 +2,7 @@ package pageObjects.authenticgoods;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -147,5 +148,11 @@ public class Tables extends CommonPage {
     public void checkBasicTablesHeader() {
         By locator = By.cssSelector("h1");
         Assert.assertEquals(getClickableElement(locator).getText(), basicHeader);
+    }
+
+    public void readColumns() {
+        By tableLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody");
+        By rowLocator = (By) tableLocator.findElements((SearchContext) By.xpath("/tr"));
+        By cellLocator = (By) rowLocator.findElements((SearchContext) By.xpath("/td"));
     }
 }

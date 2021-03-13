@@ -95,9 +95,6 @@ public class TablesStepdefs {
 
     @Then("Basic Tables. Verify the content of the table")
     public void basicTablesVerifyTheContentOfTheTable(DataTable dataTable) {
-        By tableLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody");
-        By rowLocator = (By) tableLocator.findElements((SearchContext) By.xpath("/tr"));
-        By cellLocator = (By) rowLocator.findElements((SearchContext) By.xpath("/td"));
-
+        tables.readColumns();
     }
 }
