@@ -16,7 +16,7 @@ public class RestApiStepDef {
     protected static ResponseSpecification responseSpec;
 
     @When("I call Get Categories I have a response")
-    public void iCallGetCategoriesIHaveAResponse() throws IOException {
+    public void iCallGetCategoriesIHaveAResponse() {
         request = new RequestSpecBuilder().
                 setBaseUri("https://petstore.swagger.io/v2").
                 build();
