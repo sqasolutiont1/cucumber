@@ -152,17 +152,51 @@ public class Tables extends CommonPage {
     List<List<String>> actualData = new ArrayList<List<String>>();
 
     public List<List<String>> readColumns() {
+        /**
+         * Creating the selector for rows. All teh rows of the table.
+         */
         By rowLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody > tr");
+
+        /**
+         * Getting these rows as elements.
+         */
         List<WebElement> rowElement = getElements(rowLocator);
+        /**
+         * Creating List to store data from Rows.
+         */
         List<String> dataFromRow = new ArrayList<>();
+        /**
+         * Creating List of elements for cells.
+         */
         List<WebElement> listOfCells;
+        /**
+         * Loop through rows, by changing the index of the row.
+         */
         for (int i=0; i<rowElement.size(); i++){
+            /**
+             * changing this index of the row.
+             */
             By genericLocator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+(i+1)+"]/td");
+            /**
+             * getting the list of the cells for the specific row.
+             */
             listOfCells = getElements(genericLocator);
+            /**
+             * Looping through all the cells.
+             */
             for (int j =0; j<listOfCells.size();j++){
+                /**
+                 * Read data from each cell. And add data to List
+                 */
                 dataFromRow.add(listOfCells.get(j).getText());
             }
+            /**
+             * Add List ot the LIst of List
+             */
             actualData.add(new ArrayList<>(dataFromRow));
+            /**
+             * Clearing the List with old values so we could add new data.
+             */
             dataFromRow.clear();
         }
         return actualData;
