@@ -95,6 +95,8 @@ public class TablesStepdefs {
 
     @Then("Basic Tables. Verify the content of the table")
     public void basicTablesVerifyTheContentOfTheTable(DataTable dataTable) {
-        tables.readColumns();
+        List<List<String>> expectedData = dataTable.asLists();
+        List<List<String>> actualData = tables.readColumns();
+        Assert.assertEquals(actualData, expectedData);
     }
 }

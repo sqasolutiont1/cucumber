@@ -33,7 +33,7 @@ public class CommonPage {
             driver = new OurDriver().localDriver();
         }
         wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofMillis(50))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
