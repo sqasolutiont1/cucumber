@@ -19,6 +19,7 @@ public class Tables extends CommonPage {
     String header = "Data Tables";
     String[] headerContents = {"Name", "Position", "Office", "Age", "Start date", "Salary"};
     Navigation navigation = new Navigation();
+    private String basicHeader = "Basic Tables";
 
     public Tables() {
         super();
@@ -136,5 +137,15 @@ public class Tables extends CommonPage {
             e.printStackTrace();
         }
         return lines;
+    }
+
+    public void navToBasicTables() {
+        navigate();
+        navigation.pressOnBasicTables();
+    }
+
+    public void checkBasicTablesHeader() {
+        By locator = By.cssSelector("h1");
+        Assert.assertEquals(getClickableElement(locator).getText(), basicHeader);
     }
 }

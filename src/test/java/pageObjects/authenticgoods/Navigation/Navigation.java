@@ -30,5 +30,11 @@ public class Navigation extends CommonPage {
         getClickableElement(By.cssSelector("[title='Modals & Popups']")).click();
         waitForPageLoad();
     }
+
+    public void pressOnBasicTables() {
+        pressOnTablesMenuItem();
+        getClickableElement(By.cssSelector("[title='Basic']")).click();
+        waitForPageLoad();
+    }
 }
 

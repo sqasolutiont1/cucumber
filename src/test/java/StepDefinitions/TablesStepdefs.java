@@ -80,4 +80,14 @@ public class TablesStepdefs {
         List<String> testData = tables.readTestData();
         Assert.assertEquals(tables.getTestData(), testData, "Actual data doesn't match the test data");
     }
+
+    @Given("Basic Tables. Navigate to Basic Tables")
+    public void basicTablesNavigateToBasicTables() {
+        tables.navToBasicTables();
+    }
+
+    @When("Basic Tables. I check if I'm on the Basic Tables page")
+    public void basicTablesICheckIfIMOnTheBasicTablesPage() {
+        tables.checkBasicTablesHeader();
+    }
 }
