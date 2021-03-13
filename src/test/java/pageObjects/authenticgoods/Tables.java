@@ -152,7 +152,7 @@ public class Tables extends CommonPage {
 
     public List<List<String>> readColumns() {
         /**
-         * Create list of the lists to hold all teh data read form cells
+         * Create list of the lists to hold all the data read form cells
          */
         List<List<String>> actualData = new ArrayList<>();
 
