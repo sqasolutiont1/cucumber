@@ -17,6 +17,7 @@ public class Navigation extends CommonPage {
 
     private void pressOnTablesMenuItem() {
         getClickableElement(By.cssSelector("[title='Tables']")).click();
+        waitForPageLoad();
     }
 
     public void pressOnDataTables() {

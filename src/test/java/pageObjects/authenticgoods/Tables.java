@@ -10,6 +10,7 @@ import pageObjects.authenticgoods.Navigation.Navigation;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.ByteChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -146,13 +147,25 @@ public class Tables extends CommonPage {
     }
 
     public void checkBasicTablesHeader() {
-        By locator = By.cssSelector("h1");
+        By locator = By.xpath("//h1[normalize-space()='Basic Tables']");
         Assert.assertEquals(getClickableElement(locator).getText(), basicHeader);
     }
 
     public void readColumns() {
-        By tableLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody");
-        By rowLocator = (By) tableLocator.findElements((SearchContext) By.xpath("/tr"));
-        By cellLocator = (By) rowLocator.findElements((SearchContext) By.xpath("/td"));
+        By rowLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody > tr");
+        List<WebElement> rowElement = getElements(rowLocator);
+        List<List<String>> actualData = new ArrayList<>();
+        List<String> dataFromRow = new ArrayList<>();
+        List<WebElement> listOfCells;
+        for (int i=0; i<rowElement.size(); i++){
+            By genericLocator = By.xpath("/html[1]/body[1]/section[1]/section[1]/div[1]/div[1]/section[1]/div[1]/div[1]/div[1]/div[2]/table[1]/tbody[1]/tr["+(i+1)+"]/td");
+            listOfCells = getElements(genericLocator);
+            dataFromRow.clear();
+            for (int j =0; j<listOfCells.size();j++){
+                dataFromRow.add(listOfCells.get(j).getText());
+            }
+            actualData.add(dataFromRow);
+        }
+        System.out.println(actualData);
     }
 }

@@ -25,6 +25,7 @@ public class CommonPage {
     static WebDriver driver;
     Wait<WebDriver> wait;
     Wait<WebDriver> waitForInvisibility;
+    Wait<WebDriver> waitForVisibility;
     String URL = TestURLs.MainURL;
 
     public CommonPage() {
@@ -41,6 +42,12 @@ public class CommonPage {
                 .pollingEvery(Duration.ofMillis(50))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(StaleElementReferenceException.class);
+        Wait<WebDriver> waitForVisibility= new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(3))
+                .pollingEvery(Duration.ofMillis(50))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(StaleElementReferenceException.class);
+
     }
 
     /**
@@ -218,6 +225,9 @@ public class CommonPage {
 
     public Boolean isInvisible(By locator){
         return waitForInvisibility.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+    public WebElement isVisible(By locator){
+        return waitForInvisibility.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public Boolean isInvisible(WebElement webElement){
