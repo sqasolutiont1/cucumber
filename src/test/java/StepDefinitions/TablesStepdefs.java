@@ -5,6 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.testng.Assert;
 import pageObjects.authenticgoods.Tables;
 
@@ -89,5 +91,13 @@ public class TablesStepdefs {
     @When("Basic Tables. I check if I'm on the Basic Tables page")
     public void basicTablesICheckIfIMOnTheBasicTablesPage() {
         tables.checkBasicTablesHeader();
+    }
+
+    @Then("Basic Tables. Verify the content of the table")
+    public void basicTablesVerifyTheContentOfTheTable(DataTable dataTable) {
+        By tableLocator = By.cssSelector("div.row:nth-child(1) > div.col-md-6:nth-child(1) > div.panel.panel-default:nth-child(1) > div.panel-body:nth-child(2) > table.table:nth-child(1) > tbody");
+        By rowLocator = (By) tableLocator.findElements((SearchContext) By.xpath("/tr"));
+        By cellLocator = (By) rowLocator.findElements((SearchContext) By.xpath("/td"));
+
     }
 }
