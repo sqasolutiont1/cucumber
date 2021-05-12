@@ -14,7 +14,7 @@ public class Wizard extends CommonPage {
         saveToLogFile("Setting first name as: " + value);
 
         Logger.getLogger(CommonPage.class).info("Setting first name as: " + value);
-        By locator = By.name("FirstName");
+        By locator = By.name("firstName");
         saveToLogFile("Clearing the text field" + locator.toString());
 
         getClickableElement(locator).clear();
